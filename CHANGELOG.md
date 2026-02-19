@@ -1,3 +1,10 @@
+## Unrelased
+
+### Breaking change
+
+* `min-utilization` now considers only CPUs, not other resources
+
+
 ## v0.25.0
 
 ### Breaking change
