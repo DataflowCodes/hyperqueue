@@ -28,6 +28,9 @@ pub enum TaskRuntimeState {
         worker_id: WorkerId,
         rv_id: ResourceVariantId,
     },
+    Prefilled {
+        worker_id: WorkerId,
+    },
     Retracting {
         source: WorkerId,
     },

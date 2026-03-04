@@ -150,6 +150,11 @@ fn process_proactive_filling(core: &mut Core, task: Task, mapping: &mut WorkerTa
             let out = mapping.sn_tasks_to_workers.entry(worker.id).or_default();
             for _ in 0..missing {
                 let task_id = queue.take_one().unwrap();
+                let task = task_map.get_task_mut(task_id);
+                assert!(task.is_ready());
+                task.state = TaskRuntimeState::Prefilled {
+                    worker_id: worker.id,
+                };
                 worker.insert_prefill_task(task_id, queue.resource_rq_id);
                 out.push((task_id, None))
             }
